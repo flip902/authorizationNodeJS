@@ -5,8 +5,10 @@ var mongoose = require('mongoose');
 var sessions = require('client-sessions');
 var csrf = require('csurf');
 
+mongoose.Promise = global.Promise;
+
 var uri = 'mongodb://localhost/auth';
-mongoose.connect(uri);
+mongoose.connect(uri, { useMongoClient: true });
 
 var Schema = mongoose.Schema;
 var ObjectId = Schema.ObjectId;
